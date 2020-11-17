@@ -15,9 +15,7 @@ export type SetCSSVariableSettings = {
 const setCSSVariable: SetCSSVariable = (ref: MutableRefObject<null>, name, value, settings) => {
   const el = ref?.current as HTMLElement | null
 
-  const postfix = settings?.postfix ? `_${settings?.postfix}` : ''
-  // eslint-disable-next-line no-unused-expressions
-  el?.style.setProperty(`--${name}${postfix}`, value.toString())
+  el?.style.setProperty(`--${settings?.prefix || ''}${name}${settings?.postfix || ''}`, value.toString())
 }
 
 export default setCSSVariable
