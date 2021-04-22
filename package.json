@@ -1,0 +1,36 @@
+{
+  "name": "redux-batched-actions-thunk",
+  "version": "1.0.0",
+  "description": "redux-batched-actions-thunk",
+  "main": "./dist",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/savchenko91/auto-batch-thunk-redux"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "jest --coverage"
+  },
+  "author": "Alexander Savchenko <savchenkoalexander91@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "global": ">=3.0.0",
+    "redux": "*"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.13",
+    "jest": "24.8.0",
+    "redux": "^4.0.5",
+    "ts-jest": "24.0.2",
+    "tsc": "^1.20150623.0",
+    "typescript": "^4.0.0-dev.20200803"
+  }
+}
