@@ -32,7 +32,7 @@ export interface BatchAction {
 export interface ThunkDispatch<
   TState,
   TExtraThunkArg,
-  TBasicAction extends Action
+  TBasicAction extends Action | Action[] | ThunkAction | ThunkAction[]
 > {
   <TReturnType>(
     thunkAction: ThunkAction<TReturnType, TState, TExtraThunkArg, TBasicAction>
@@ -49,10 +49,10 @@ export interface ThunkDispatch<
 }
 
 export type ThunkAction<
-  TReturnType,
-  TState,
-  TExtraThunkArg,
-  TBasicAction extends Action
+  TReturnType = any,
+  TState = any,
+  TExtraThunkArg = any,
+  TBasicAction extends Action | Action[] | ThunkAction | ThunkAction[] = any
 > = (
   dispatch: ThunkDispatch<TState, TExtraThunkArg, TBasicAction>,
   getState: () => TState,
@@ -68,7 +68,7 @@ declare module "redux" {
   ): {
     [TActionCreatorName in keyof TActionCreators]: ReturnType<
       TActionCreators[TActionCreatorName]
-    > extends ThunkAction<any, any, any, any>
+    > extends ThunkAction
       ? (
           ...args: Parameters<TActionCreators[TActionCreatorName]>
         ) => ReturnType<ReturnType<TActionCreators[TActionCreatorName]>>
